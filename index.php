@@ -17,5 +17,13 @@ require __DIR__.'/vendor/autoload.php';
 /** @var Application $app */
 $app = require_once __DIR__.'/bootstrap/app.php';
 
+// Temporary debug utility to clear Laravel route/config cache in production
+if (isset($_GET['clear_cache']) && $_GET['clear_cache'] === 'forahia123') {
+    $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+    $status = $kernel->call('optimize:clear');
+    echo "Stale Cache Cleared! Status: " . $status;
+    exit;
+}
+
 // 4. Handle Request
 $app->handleRequest(Request::capture());
