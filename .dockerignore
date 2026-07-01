@@ -17,7 +17,5 @@ compose.yaml
 Dockerfile
 .dockerignore
 npm-debug.log
-composer.lock
-package-lock.json
 public/build
 public/storage
